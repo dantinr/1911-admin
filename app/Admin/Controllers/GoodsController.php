@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Model\CategoryModel;
 use App\Model\GoodsModel;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -79,7 +80,7 @@ class GoodsController extends AdminController
     {
         $form = new Form(new GoodsModel());
 
-        $form->number('cat_id', __('分类'));
+        $form->select('cat_id', __('分类'))->options(CategoryModel::selectOptions());
         $form->text('goods_sn', __('Goods sn'))->disable();
         $form->text('goods_name', __('Goods name'));
         $form->text('click_count', __('Click count'))->disable();
